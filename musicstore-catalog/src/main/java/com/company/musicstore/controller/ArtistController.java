@@ -1,9 +1,7 @@
 package com.company.musicstore.controller;
 
 import com.company.musicstore.model.Artist;
-import com.company.musicstore.model.Label;
 import com.company.musicstore.repository.ArtistRepository;
-import com.company.musicstore.repository.LabelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
