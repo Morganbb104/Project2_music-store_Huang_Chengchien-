@@ -14,14 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/label")
 public class LabelController {
     @Autowired
     private LabelRepository repo;
-
-    @GetMapping(value="/label")
+    @GetMapping("/label")
     @ResponseStatus(HttpStatus.OK)
-    public List<Label> getAllProduce() {
+    public List<Label> getAllLabel() {
         return repo.findAll();
     }
 
