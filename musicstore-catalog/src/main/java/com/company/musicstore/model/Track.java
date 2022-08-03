@@ -14,7 +14,7 @@ public class Track {
     @Column(name="album_id")
     private int albumId;
 
-    private String name;
+    private String title;
 
     @Column(name="run_time")
     private int runtime;
@@ -22,10 +22,10 @@ public class Track {
     public Track() {
     }
 
-    public Track(int id, int albumId, String name, int runtime) {
+    public Track(int id, int albumId, String title, int runtime) {
         this.id = id;
         this.albumId = albumId;
-        this.name = name;
+        this.title = title;
         this.runtime = runtime;
     }
 
@@ -45,12 +45,12 @@ public class Track {
         this.albumId = albumId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getRuntime() {
@@ -66,12 +66,12 @@ public class Track {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Track track = (Track) o;
-        return id == track.id && albumId == track.albumId && runtime == track.runtime && Objects.equals(name, track.name);
+        return id == track.id && albumId == track.albumId && runtime == track.runtime && Objects.equals(title, track.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, albumId, name, runtime);
+        return Objects.hash(id, albumId, title, runtime);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Track {
         return "Track{" +
                 "id=" + id +
                 ", albumId=" + albumId +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", runtime=" + runtime +
                 '}';
     }
