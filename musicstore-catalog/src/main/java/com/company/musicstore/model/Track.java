@@ -22,6 +22,12 @@ public class Track {
     public Track() {
     }
 
+    public Track(int albumId, String title, int runtime) {
+        this.albumId = albumId;
+        this.title = title;
+        this.runtime = runtime;
+    }
+
     public Track(int id, int albumId, String title, int runtime) {
         this.id = id;
         this.albumId = albumId;

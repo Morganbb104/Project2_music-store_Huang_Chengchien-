@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -31,8 +32,8 @@ public class AlbumRepositoryTest {
 
     @Before
     public void setUp() throws Exception{
-        albumRepo.deleteAll();
         trackRepo.deleteAll();
+        albumRepo.deleteAll();
         artistRepo.deleteAll();
         labelRepo.deleteAll();
     }
@@ -40,7 +41,7 @@ public class AlbumRepositoryTest {
 
     @Test
     public void addGetDeleteAlbum(){
-// Need to create a Label and an Artist first
+        // Requiring a Label and an Artist first
         Label label = new Label();
         label.setName("Stone");
         label.setWebsite("www.stone.com");
@@ -59,11 +60,11 @@ public class AlbumRepositoryTest {
         track.setRuntime(track.setRuntime(100));
 
         Album album = new Album();
-        album.setTitle("Greatest Hits");
+        album.setTitle("Tasmania");
         album.setArtistId(artist.getId());
         album.setLabelId(label.getId());
-        album.setReleaseDate(LocalDate.of(2010,1,5));
-        album.setListPrice(new BigDecimal("21.95"));
+        album.setReleaseDate(LocalDate.of(2022,1,15));
+        album.setListPrice(new BigDecimal("19.99"));
 
         album = albumRepo.save(album);
 
@@ -79,5 +80,79 @@ public class AlbumRepositoryTest {
 
     }
 
+    @Test
+    public void getAllAlbums() {
+
+        // Requiring a Label and an Artist first
+        Label label = new Label();
+        label.setName("Stone");
+        label.setWebsite("www.stone.com");
+        label = labelRepo.save(label);
+
+        Artist artist = new Artist();
+        artist.setName("Namees");
+        artist.setInstagram("@Namees");
+        artist.setTwitter("@Namees");
+        artist = artistRepo.save(artist);
+
+        Track track = new Track();
+        track.setId(track.getId());
+        track.setAlbumId(track.getAlbumId());
+        track.setTitle(track.getTitle());
+        track.setRuntime(track.setRuntime(100));
+
+        Album album = new Album();
+        album.setTitle("Tasmania");
+        album.setArtistId(artist.getId());
+        album.setLabelId(label.getId());
+        album.setReleaseDate(LocalDate.of(2022,1,15));
+        album.setListPrice(new BigDecimal("19.99"));
+
+
+        album = new Album();
+        album.setTitle("Perth");
+        album.setArtistId(artist.getId());
+        album.setLabelId(label.getId());
+        album.setReleaseDate(LocalDate.of(2022,9,21));
+        album.setListPrice(new BigDecimal("29.99"));
+
+        album = albumRepo.save(album);
+
+        List<Album> aList = albumRepo.findAll();
+
+        assertEquals(aList.size(), 2);
+
+    }
+
+    @Test
+    public void updateAAlbum(){
+        // Requiring a Label and an Artist first
+        Label label = new Label();
+        label.setName("Stone");
+        label.setWebsite("www.stone.com");
+        label = labelRepo.save(label);
+
+        Artist artist = new Artist();
+        artist.setName("Namees");
+        artist.setInstagram("@Namees");
+        artist.setTwitter("@Namees");
+        artist = artistRepo.save(artist);
+
+        Track track = new Track();
+        track.setId(track.getId());
+        track.setAlbumId(track.getAlbumId());
+        track.setTitle(track.getTitle());
+        track.setRuntime(track.setRuntime(100));
+
+        Album album = new Album();
+        album.setTitle("Tasmania");
+        album.setArtistId(artist.getId());
+        album.setLabelId(label.getId());
+        album.setReleaseDate(LocalDate.of(2022,1,15));
+        album.setListPrice(new BigDecimal("19.99"));
+
+        album = albumRepo.save(album);
+
+    }
 
 }

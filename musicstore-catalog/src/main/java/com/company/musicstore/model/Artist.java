@@ -19,6 +19,12 @@ public class Artist {
     public Artist() {
     }
 
+    public Artist(String name, String instagram, String twitter) {
+        this.name = name;
+        this.instagram = instagram;
+        this.twitter = twitter;
+    }
+
     public Artist(Integer id, String name, String instagram, String twitter) {
         this.id = id;
         this.name = name;

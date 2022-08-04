@@ -17,6 +17,11 @@ public class Label {
     public Label() {
     }
 
+    public Label(String name, String website) {
+        this.name = name;
+        this.website = website;
+    }
+
     public Label(Integer id, String name, String website) {
         this.id = id;
         this.name = name;
