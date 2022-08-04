@@ -20,12 +20,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -88,6 +88,25 @@ public class AlbumControllerTest {
                 .andDo(print())
                 .andExpect(status().isCreated())            // Assert
                 .andExpect(content().json(outputAlbumJson));  // Assert
+    }
+
+    @Test
+    public void getAlbumByIdShouldReturnStatus200() throws Exception {
+        Album outputAlbum = new Album(1,"Fairy Tale", 1, LocalDate.of(2022,8,02),2,BigDecimal.valueOf(9.99));
+        String outputAlbumJson = mapper.writeValueAsString(outputAlbum);
+        doReturn(Optional.of(outputAlbum)).when(repo).findById(1);
+        mockMvc.perform(get("/album/1"))
+                .andExpect(status().isOk())
+                .andExpect((content().json(outputAlbumJson)));
+    }
+
+    @Test
+    public void DeleteAlbumShouldReturnStatus204() throws Exception {
+        mockMvc.perform(delete("/album/2"))
+                .andDo(print())          // Assert
+                .andExpect(status().isNoContent());  // Assert
+
+
     }
 
 

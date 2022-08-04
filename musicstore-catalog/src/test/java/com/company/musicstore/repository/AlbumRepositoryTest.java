@@ -108,6 +108,8 @@ public class AlbumRepositoryTest {
         album.setReleaseDate(LocalDate.of(2022,1,15));
         album.setListPrice(new BigDecimal("19.99"));
 
+        album = albumRepo.save(album);
+
 
         album = new Album();
         album.setTitle("Perth");
@@ -152,6 +154,8 @@ public class AlbumRepositoryTest {
         album.setListPrice(new BigDecimal("19.99"));
 
         album = albumRepo.save(album);
+        Optional<Album> album1 = albumRepo.findById(album.getId());
+        assertEquals(album1.get(), album);
 
     }
 
