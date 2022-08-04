@@ -101,7 +101,19 @@ public class AlbumControllerTest {
     }
 
     @Test
-    public void DeleteAlbumShouldReturnStatus204() throws Exception {
+    public void updateAlbumShouldReturnStatus200() throws Exception {
+        Album InputAlbum = new Album(1,"Fairy Tale", 1, LocalDate.of(2022,8,02),2,BigDecimal.valueOf(9.99));
+        String expectedAlbumJson = mapper.writeValueAsString(InputAlbum);
+        mockMvc.perform(put("/album/1")
+                                .content(expectedAlbumJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isNoContent());
+    }
+
+
+    @Test
+    public void DeleteAlbumByIdShouldReturnStatus204() throws Exception {
         mockMvc.perform(delete("/album/2"))
                 .andDo(print())          // Assert
                 .andExpect(status().isNoContent());  // Assert
