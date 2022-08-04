@@ -57,8 +57,9 @@ public class Track {
         return runtime;
     }
 
-    public void setRuntime(int runtime) {
+    public int setRuntime(int runtime) {
         this.runtime = runtime;
+        return runtime;
     }
 
     @Override
