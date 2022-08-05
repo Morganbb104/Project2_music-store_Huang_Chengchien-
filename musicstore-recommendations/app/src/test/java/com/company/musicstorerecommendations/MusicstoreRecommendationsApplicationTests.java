@@ -1,4 +1,4 @@
-package com.example.musicstorerecommendations;
+package com.company.musicstorerecommendations;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
