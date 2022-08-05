@@ -24,8 +24,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -87,15 +86,35 @@ public class ArtistControllerTest {
     }
 
 
-//    @Test
-//    public void getArtistByIdShouldReturnStatus200() throws Exception {
-//        Artist outputArtist = new Artist(11,"Namees","@Namees", "@Namees");
-//        String outputArtistJson = mapper.writeValueAsString(outputArtist);
-//        doReturn(Optional.of(outputArtist)).when(repo).findById(11);
-//        mockMvc.perform(get("/Artist/11"))
-//                .andExpect(status().isOk())
-//                .andExpect((content().json(outputArtistJson)));
-//    }
+    @Test
+    public void getArtistByIdShouldReturnStatus200() throws Exception {
+        Artist outputArtist = new Artist(1,"Mike","@Mike", "@Mike");
+        String outputArtistJson = mapper.writeValueAsString(outputArtist);
+        doReturn(Optional.of(outputArtist)).when(repo).findById(1);
+        mockMvc.perform(get("/Artist/1"))
+                .andExpect(status().isOk())
+                .andExpect((content().json(outputArtistJson)));
+    }
+
+    @Test
+    public void updateArtistShouldReturnStatus200() throws Exception {
+        Artist InputArtist = new Artist(1,"Mike","@Mike", "@Mike");
+        String expectedArtistJson = mapper.writeValueAsString(InputArtist);
+        mockMvc.perform(put("/artist/1")
+                        .content(expectedArtistJson)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void DeleteArtistByIdShouldReturnStatus204() throws Exception {
+        mockMvc.perform(delete("/artist/2"))
+                .andDo(print())          // Assert
+                .andExpect(status().isNoContent());  // Assert
+
+
+    }
 
 
     }
