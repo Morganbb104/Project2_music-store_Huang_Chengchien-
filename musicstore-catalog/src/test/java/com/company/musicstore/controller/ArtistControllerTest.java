@@ -15,6 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -91,7 +94,7 @@ public class ArtistControllerTest {
         Artist outputArtist = new Artist(1,"Mike","@Mike", "@Mike");
         String outputArtistJson = mapper.writeValueAsString(outputArtist);
         doReturn(Optional.of(outputArtist)).when(repo).findById(1);
-        mockMvc.perform(get("/Artist/1"))
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/artist/1"))
                 .andExpect(status().isOk())
                 .andExpect((content().json(outputArtistJson)));
     }

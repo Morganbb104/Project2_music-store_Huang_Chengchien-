@@ -102,7 +102,7 @@ public class TrackControllerTest {
     public void updateTrackShouldReturnStatus200() throws Exception {
         Track InputTrack = new Track(1,1,"Fairy Tale",120);
         String expectedTrackJson = mapper.writeValueAsString(InputTrack);
-        mockMvc.perform(put("/album/1")
+        mockMvc.perform(put("/track/1")
                         .content(expectedTrackJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
