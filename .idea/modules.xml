@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Project2_music-store_Huang_Chengchien-.iml" filepath="$PROJECT_DIR$/.idea/Project2_music-store_Huang_Chengchien-.iml" />
       <module fileurl="file://$PROJECT_DIR$/musicstore-catalog/musicstore-catalog.iml" filepath="$PROJECT_DIR$/musicstore-catalog/musicstore-catalog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/musicstore-recommendations/musicstore-recommendations.iml" filepath="$PROJECT_DIR$/musicstore-recommendations/musicstore-recommendations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musicstore-recommendations/app/musicstore-recommendations.iml" filepath="$PROJECT_DIR$/musicstore-recommendations/app/musicstore-recommendations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musicstore-catalog/app/musicstorecatalog.iml" filepath="$PROJECT_DIR$/musicstore-catalog/app/musicstorecatalog.iml" />
     </modules>
   </component>
 </project>
