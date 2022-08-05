@@ -10,20 +10,22 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "album_recommendation_id")
     private Integer id;
-    private int album_id;
-    private int user_id;
+    @Column(name ="album_id")
+    private int albumId;
+    @Column(name ="user_id")
+    private int userId;
     private boolean liked;
 
-    public Album(Integer id, int album_id, int user_id, boolean liked) {
+    public Album(Integer id, int albumId, int userId, boolean liked) {
         this.id = id;
-        this.album_id = album_id;
-        this.user_id = user_id;
+        this.albumId = albumId;
+        this.userId = userId;
         this.liked = liked;
     }
 
-    public Album(int album_id, int user_id, boolean liked) {
-        this.album_id = album_id;
-        this.user_id = user_id;
+    public Album(int albumId, int userId, boolean liked) {
+        this.albumId = albumId;
+        this.userId = userId;
         this.liked = liked;
     }
 
@@ -38,20 +40,20 @@ public class Album {
         this.id = id;
     }
 
-    public int getAlbum_id() {
-        return album_id;
+    public int getAlbumId() {
+        return albumId;
     }
 
-    public void setAlbum_id(int album_id) {
-        this.album_id = album_id;
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public boolean isLiked() {
@@ -67,20 +69,20 @@ public class Album {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return album_id == album.album_id && user_id == album.user_id && liked == album.liked && Objects.equals(id, album.id);
+        return albumId == album.albumId && userId == album.userId && liked == album.liked && Objects.equals(id, album.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, album_id, user_id, liked);
+        return Objects.hash(id, albumId, userId, liked);
     }
 
     @Override
     public String toString() {
         return "Album{" +
                 "id=" + id +
-                ", album_id=" + album_id +
-                ", user_id=" + user_id +
+                ", albumId=" + albumId +
+                ", userId=" + userId +
                 ", liked=" + liked +
                 '}';
     }

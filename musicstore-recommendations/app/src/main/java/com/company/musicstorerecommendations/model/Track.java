@@ -10,20 +10,22 @@ public class Track {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "track_recommendation_id")
     private Integer id;
-    private int track_id;
-    private int user_id;
+    @Column(name = "track_id")
+    private int trackId;
+    @Column(name = "user_id")
+    private int userId;
     private boolean liked;
 
-    public Track(Integer id, int track_id, int user_id, boolean liked) {
+    public Track(Integer id, int trackId, int userId, boolean liked) {
         this.id = id;
-        this.track_id = track_id;
-        this.user_id = user_id;
+        this.trackId = trackId;
+        this.userId = userId;
         this.liked = liked;
     }
 
-    public Track(int track_id, int user_id, boolean liked) {
-        this.track_id = track_id;
-        this.user_id = user_id;
+    public Track(int trackId, int userId, boolean liked) {
+        this.trackId = trackId;
+        this.userId = userId;
         this.liked = liked;
     }
 
@@ -38,20 +40,20 @@ public class Track {
         this.id = id;
     }
 
-    public int getTrack_id() {
-        return track_id;
+    public int getTrackId() {
+        return trackId;
     }
 
-    public void setTrack_id(int track_id) {
-        this.track_id = track_id;
+    public void setTrackId(int trackId) {
+        this.trackId = trackId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public boolean isLiked() {
@@ -67,20 +69,20 @@ public class Track {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Track track = (Track) o;
-        return track_id == track.track_id && user_id == track.user_id && liked == track.liked && Objects.equals(id, track.id);
+        return trackId == track.trackId && userId == track.userId && liked == track.liked && Objects.equals(id, track.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, track_id, user_id, liked);
+        return Objects.hash(id, trackId, userId, liked);
     }
 
     @Override
     public String toString() {
         return "Track{" +
                 "id=" + id +
-                ", track_id=" + track_id +
-                ", user_id=" + user_id +
+                ", trackId=" + trackId +
+                ", userId=" + userId +
                 ", liked=" + liked +
                 '}';
     }

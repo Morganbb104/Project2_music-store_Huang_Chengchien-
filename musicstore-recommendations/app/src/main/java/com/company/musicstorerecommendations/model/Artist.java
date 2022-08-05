@@ -11,20 +11,22 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_recommendation_id")
     private Integer id;
-    private int artist_id;
-    private int user_id;
+    @Column(name = "artist_id")
+    private int artistId;
+    @Column(name = "user_id")
+    private int userId;
     private boolean liked;
 
-    public Artist(Integer id, int artist_id, int user_id, boolean liked) {
+    public Artist(Integer id, int artistId, int userId, boolean liked) {
         this.id = id;
-        this.artist_id = artist_id;
-        this.user_id = user_id;
+        this.artistId = artistId;
+        this.userId = userId;
         this.liked = liked;
     }
 
-    public Artist(int artist_id, int user_id, boolean liked) {
-        this.artist_id = artist_id;
-        this.user_id = user_id;
+    public Artist(int artistId, int userId, boolean liked) {
+        this.artistId = artistId;
+        this.userId = userId;
         this.liked = liked;
     }
 
@@ -39,20 +41,20 @@ public class Artist {
         this.id = id;
     }
 
-    public int getArtist_id() {
-        return artist_id;
+    public int getArtistId() {
+        return artistId;
     }
 
-    public void setArtist_id(int artist_id) {
-        this.artist_id = artist_id;
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public boolean isLiked() {
@@ -68,20 +70,20 @@ public class Artist {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artist artist = (Artist) o;
-        return artist_id == artist.artist_id && user_id == artist.user_id && liked == artist.liked && Objects.equals(id, artist.id);
+        return artistId == artist.artistId && userId == artist.userId && liked == artist.liked && Objects.equals(id, artist.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, artist_id, user_id, liked);
+        return Objects.hash(id, artistId, userId, liked);
     }
 
     @Override
     public String toString() {
         return "Artist{" +
                 "id=" + id +
-                ", artist_id=" + artist_id +
-                ", user_id=" + user_id +
+                ", artistId=" + artistId +
+                ", userId=" + userId +
                 ", liked=" + liked +
                 '}';
     }
