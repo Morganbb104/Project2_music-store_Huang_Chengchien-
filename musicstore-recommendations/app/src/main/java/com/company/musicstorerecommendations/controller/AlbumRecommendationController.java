@@ -1,9 +1,16 @@
 package com.company.musicstorerecommendations.controller;
 
+import com.company.musicstorerecommendations.repository.AlbumRecommendationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AlbumRecommendationController {
+
+    @Autowired
+    private AlbumRecommendationRepository repo;
+
+
+
 }
