@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,10 +20,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,6 +70,54 @@ public class LabelControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())                 // Assert
                 .andExpect(content().json(expectedJsonValue));
+    }
+
+    @Test
+    public void createLabelShouldReturnNewLabelAndStatus201() throws Exception {
+        // Arrange
+        Label outputLabel = new Label(1,"Cheng","www.cheng.com");
+        Label inputLabel = new Label("Cheng","www.cheng.com");
+
+        String outputLabelJson = mapper.writeValueAsString(outputLabel);
+        String inputLabelJson = mapper.writeValueAsString(inputLabel);
+
+        // Act
+        mockMvc.perform(post("/label")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(inputLabelJson))
+                .andDo(print())
+                .andExpect(status().isCreated())            // Assert
+                .andExpect(content().json(outputLabelJson));  // Assert
+    }
+
+    @Test
+    public void getLabelByIdShouldReturnStatus200() throws Exception {
+        Label outputLabel = new Label(1,"Cheng", "www.cheng.com");
+        String outputLabelJson = mapper.writeValueAsString(outputLabel);
+        doReturn(Optional.of(outputLabel)).when(repo).findById(1);
+        mockMvc.perform(get("/label/1"))
+                .andExpect(status().isOk())
+                .andExpect((content().json(outputLabelJson)));
+    }
+
+    @Test
+    public void updateLabelShouldReturnStatus200() throws Exception {
+        Label InputLabel = new Label(1,"Cheng", "www.cheng.com");
+        String expectedLabelJson = mapper.writeValueAsString(InputLabel);
+        mockMvc.perform(put("/label/1")
+                        .content(expectedLabelJson)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void DeleteLabelByIdShouldReturnStatus204() throws Exception {
+        mockMvc.perform(delete("/label/2"))
+                .andDo(print())          // Assert
+                .andExpect(status().isNoContent());  // Assert
+
+
     }
 
 }
