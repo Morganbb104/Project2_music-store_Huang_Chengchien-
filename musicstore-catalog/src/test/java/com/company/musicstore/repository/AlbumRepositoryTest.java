@@ -108,7 +108,7 @@ public class AlbumRepositoryTest {
         album.setReleaseDate(LocalDate.of(2022,1,15));
         album.setListPrice(new BigDecimal("19.99"));
 
-        album = albumRepo.save(album);
+        albumRepo.save(album);
 
 
         album = new Album();
@@ -118,7 +118,7 @@ public class AlbumRepositoryTest {
         album.setReleaseDate(LocalDate.of(2022,9,21));
         album.setListPrice(new BigDecimal("29.99"));
 
-        album = albumRepo.save(album);
+        albumRepo.save(album);
 
         List<Album> aList = albumRepo.findAll();
 
@@ -127,7 +127,7 @@ public class AlbumRepositoryTest {
     }
 
     @Test
-    public void updateAAlbum(){
+    public void updateAnAlbum(){
         // Requiring a Label and an Artist first
         Label label = new Label();
         label.setName("Stone");
