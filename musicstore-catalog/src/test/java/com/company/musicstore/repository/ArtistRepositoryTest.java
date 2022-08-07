@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -39,7 +40,7 @@ public class ArtistRepositoryTest {
     }
 
     @Test
-    public void addGetDeleteAlbum(){
+    public void addGetDeleteArtist(){
         // Requiring a Label and an Artist first
         Label label = new Label();
         label.setName("Stone");
@@ -76,6 +77,29 @@ public class ArtistRepositoryTest {
         artist1 = artistRepo.findById(artist.getId());
 
         assertFalse(artist1.isPresent());
+
+    }
+
+    @Test
+    public void getAllArtists(){
+        Artist artist1 = new Artist("Thomas","@thomas","@thomas");
+        Artist artist2 = new Artist("Jacob","@jacob","@jacob");
+        artistRepo.save(artist1);
+        artistRepo.save(artist2);
+        List<Artist> aList = artistRepo.findAll();
+        assertEquals(aList.size(), 2);
+
+
+    }
+
+    @Test
+    public void updateArtist(){
+        Artist artist1 = artistRepo.save(new Artist(1,"Thomas","@thomas","@thomas"));
+        artist1.setName("Jacob");
+        artistRepo.save(artist1);
+        Optional<Artist> actual = artistRepo.findById(artist1.getId());
+
+        assertEquals(actual.get(), artist1);
 
     }
 
