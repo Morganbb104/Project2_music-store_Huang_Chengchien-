@@ -1,9 +1,7 @@
 package com.company.musicstore.controller;
 
 import com.company.musicstore.model.Album;
-import com.company.musicstore.model.Produce;
 import com.company.musicstore.repository.AlbumRepository;
-import com.company.musicstore.service.ProduceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

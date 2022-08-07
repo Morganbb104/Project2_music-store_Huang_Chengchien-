@@ -2,8 +2,10 @@ package com.company.musicstorerecommendations.repository;
 
 import com.company.musicstorerecommendations.model.Track;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TrackRecommendationRepository extends JpaRepository<Track,Integer> {
+@Repository
+public interface TrackRecommendationRepository extends JpaRepository<Track, Integer> {
 
 
 }

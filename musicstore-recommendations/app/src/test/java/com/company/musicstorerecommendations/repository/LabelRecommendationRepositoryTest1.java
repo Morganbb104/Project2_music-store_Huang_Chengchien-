@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TrackRecommendationRepositoryTest {
+public class LabelRecommendationRepositoryTest1 {
     @Autowired
     AlbumRecommendationRepository albumRecommendationRepo;
 
@@ -40,9 +40,8 @@ public class TrackRecommendationRepositoryTest {
         labelRecommendationRepo.deleteAll();
 
     }
-
     @Test
-    public void getAllTrackRecommendations() {
+    public void getAllLabelRecommendations() {
         albumRecommendationRepo.deleteAll();
         trackRecommendationRepo.deleteAll();
         artistRecommendationRepo.deleteAll();
@@ -59,10 +58,8 @@ public class TrackRecommendationRepositoryTest {
         Album albumRecommendation2 = albumRecommendationRepo.save(new Album(2, 2, 2, true));
         albumRecommendationRepo.save(albumRecommendation1);
         albumRecommendationRepo.save(albumRecommendation2);
-
-//        Track trackRecommendation1= trackRecommendationRepo.save(new(Track(1, 1, 1, true));
-//        List<Track> aList = trackRecommendationRepo.findAll();
-//        assertEquals(aList.size(), 2);
+        List<Label> aList = labelRecommendationRepo.findAll();
+        assertEquals(aList.size(), 2);
     }
 
     @Test
@@ -117,4 +114,5 @@ public class TrackRecommendationRepositoryTest {
         Assert.assertEquals(label1.get(), labelRecommendation1);
 
     }
+
 }

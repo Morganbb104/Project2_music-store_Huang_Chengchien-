@@ -1,7 +1,5 @@
 package com.company.musicstore.service;
 
-import com.company.musicstore.model.Produce;
-import com.company.musicstore.repository.ProduceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

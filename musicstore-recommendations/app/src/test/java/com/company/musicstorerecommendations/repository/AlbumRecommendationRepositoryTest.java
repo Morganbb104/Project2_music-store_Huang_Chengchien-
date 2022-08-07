@@ -30,7 +30,6 @@ public class AlbumRecommendationRepositoryTest {
     ArtistRecommendationRepository artistRecommendationRepo;
     @Autowired
     LabelRecommendationRepository labelRecommendationRepo;
-
     @Autowired
     TrackRecommendationRepository trackRecommendationRepo;
 
@@ -42,6 +41,7 @@ public class AlbumRecommendationRepositoryTest {
         trackRecommendationRepo.deleteAll();
         artistRecommendationRepo.deleteAll();
         labelRecommendationRepo.deleteAll();
+
 
     }
 
